@@ -3,8 +3,8 @@ const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const readFile = util.promisify(require('fs').readFile)
 const writeFile = util.promisify(require('fs').writeFile)
-const rootPath = path.join(__dirname, '../')
-const packages = require('../package.json')
+const rootPath = path.join(__dirname, './')
+const packages = require('./package.json')
 const PACKAGES = ['javascript', 'typescript']
 const SHELLS = {
   install: 'yarn install --check-files --frozen-lockfile',
