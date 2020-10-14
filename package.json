@@ -12,5 +12,8 @@
   "devDependencies": {
     "@consenlabs/prettier": "^0.1.0",
     "@types/node": "^14.11.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
