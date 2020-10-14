@@ -1,0 +1,19 @@
+{
+  "name": "@consenlabs/eslint",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "Eslint configuration for Consenlabs team",
+  "repository": "git@github.com:@consenlabs/eslint.git",
+  "author": "consenlabs",
+  "files": [
+    "index.js",
+    "rules.js"
+  ],
+  "peerDependencies": {
+    "eslint": ">5.0.0"
+  },
+  "dependencies": {
+    "eslint-plugin-markdown": "^1.0.2"
+  },
+  "version": "0.1.0"
+}
