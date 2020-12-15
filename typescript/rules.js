@@ -4,8 +4,8 @@ module.exports = {
   '@typescript-eslint/no-var-requires': 'error',
   '@typescript-eslint/array-type': 'off',
   camelcase: 'off',
-  '@typescript-eslint/camelcase': ['error', { properties: 'always' }],
-  '@typescript-eslint/class-name-casing': 'error',
+  '@typescript-eslint/camelcase': 'off',
+  '@typescript-eslint/class-name-casing': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/ban-types': [
     'error',
