@@ -1,4 +1,4 @@
-const rules = require('./rules/typescript')
+const rules = require('./rules')
 
 module.exports = {
   parser: '@typescript-eslint/parser',
