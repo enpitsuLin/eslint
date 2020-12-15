@@ -17,17 +17,7 @@ module.exports = {
     },
   ],
   indent: 'off',
-  '@typescript-eslint/indent': [
-    'error',
-    2,
-    {
-      SwitchCase: 1,
-      MemberExpression: 1,
-      CallExpression: { arguments: 1 },
-      ArrayExpression: 1,
-      ObjectExpression: 1,
-    },
-  ],
+  '@typescript-eslint/indent': 'off',
   '@typescript-eslint/member-delimiter-style': [
     'error',
     {
