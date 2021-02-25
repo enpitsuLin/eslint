@@ -1,5 +1,5 @@
 {
-  "name": "@consenlabs/eslint",
+  "name": "@consenlabs-fe/eslint",
   "main": "index.js",
   "license": "MIT",
   "description": "Eslint configuration for Consenlabs team",
