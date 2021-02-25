@@ -9,17 +9,17 @@ You can extend and inherit from it, please initiate an issue for any detailed ch
 
 Please make sure you have installed `eslint` and version 5 or higher.
 
-1. Install package: `yarn add @consenlabs/eslint -D`
+1. Install package: `yarn add @consenlabs-fe/eslint -D`
 2. Add the following code to the in-configuration file (`.eslintrc`):
 
     ```
-    { "extends": "@consenlabs/eslint" }
+    { "extends": "@consenlabs-fe/eslint" }
     ```
 
     **OR**, if you are using the `.yml`:
     ```yml
     extends:
-      - '@consenlabs/eslint'
+      - '@consenlabs-fe/eslint'
     ```
 
 3. If you are using `xo`, please refer to the following configuration:
@@ -27,7 +27,7 @@ Please make sure you have installed `eslint` and version 5 or higher.
     ```
     "xo": {
       "extends": [
-        "@consenlabs/eslint"
+        "@consenlabs-fe/eslint"
       ]
     },
     ```
@@ -51,11 +51,11 @@ For more information on this please read the following links:
 So naturally, we need to install dependencies before we begin:
 
 1. Install deps: `yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser -D`
-2. Install package: `yarn add @consenlabs/eslint-ts -D`
+2. Install package: `yarn add @consenlabs-fe/eslint-ts -D`
 3. Adding configuration to the `.eslintrc` file:
 
     ```json
-    "extends": ["@consenlabs/eslint-ts"],
+    "extends": ["@consenlabs-fe/eslint-ts"],
     "parserOptions": {
       "project": "./tsconfig.json"
     }
@@ -65,8 +65,8 @@ So naturally, we need to install dependencies before we begin:
 ```json
 {
   "extends": [
-    "@consenlabs/eslint-ts",
-    "@consenlabs/eslint-ts/react"
+    "@consenlabs-fe/eslint-ts",
+    "@consenlabs-fe/eslint-ts/react"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"

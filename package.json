@@ -1,16 +1,17 @@
 {
-  "name": "@consenlabs/eslint",
+  "name": "@consenlabs-fe/eslint",
   "version": "0.2.2",
   "main": "index.js",
   "license": "MIT",
   "description": "Eslint configuration for Consenlabs team",
   "repository": "git@github.com:@consenlabs/eslint.git",
-  "prettier": "@consenlabs/prettier",
+  "prettier": "@consenlabs-fe/prettier",
   "scripts": {
+    "build": "echo 0",
     "release": "node release.js"
   },
   "devDependencies": {
-    "@consenlabs/prettier": "^0.1.0",
+    "@consenlabs-fe/prettier": "^0.1.2",
     "@types/node": "^14.11.8"
   },
   "publishConfig": {
