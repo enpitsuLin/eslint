@@ -9,17 +9,17 @@ You can extend and inherit from it, please initiate an issue for any detailed ch
 
 Please make sure you have installed `eslint` and version 5 or higher.
 
-1. Install package: `yarn add @consenlabs-fe/eslint -D`
+1. Install package: `yarn add @consenlabs-fe/eslint-config -D`
 2. Add the following code to the in-configuration file (`.eslintrc`):
 
     ```
-    { "extends": "@consenlabs-fe/eslint" }
+    { "extends": "@consenlabs-fe/eslint-config" }
     ```
 
     **OR**, if you are using the `.yml`:
     ```yml
     extends:
-      - '@consenlabs-fe/eslint'
+      - '@consenlabs-fe/eslint-config'
     ```
 
 3. If you are using `xo`, please refer to the following configuration:
@@ -27,18 +27,16 @@ Please make sure you have installed `eslint` and version 5 or higher.
     ```
     "xo": {
       "extends": [
-        "@consenlabs-fe/eslint"
+        "@consenlabs-fe/eslint-config"
       ]
     },
     ```
 
 ### TypeScript & React
 
-We always recommend that you use `@typescript-eslint/parser` instead of `tslint`, as `tslint` is now out of maintenance,
+We always recommend that you use `@typescript-eslint` instead of `tslint`, as `tslint` is now out of maintenance,
 please at least make sure that you have the following dependencies installed:
 
-  - `@typescript-eslint/eslint-plugin > 1.6.0`
-  - `@typescript-eslint/parser > 1.6.0`
   - `eslint > 5.0`
 
 For more information on this please read the following links:
@@ -50,12 +48,11 @@ For more information on this please read the following links:
 
 So naturally, we need to install dependencies before we begin:
 
-1. Install deps: `yarn add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser -D`
-2. Install package: `yarn add @consenlabs-fe/eslint-ts -D`
-3. Adding configuration to the `.eslintrc` file:
+1. Install package: `yarn add @consenlabs-fe/eslint-config-ts -D`
+2. Adding configuration to the `.eslintrc` file:
 
     ```json
-    "extends": ["@consenlabs-fe/eslint-ts"],
+    "extends": ["@consenlabs-fe/eslint-config-ts"],
     "parserOptions": {
       "project": "./tsconfig.json"
     }
@@ -65,8 +62,8 @@ So naturally, we need to install dependencies before we begin:
 ```json
 {
   "extends": [
-    "@consenlabs-fe/eslint-ts",
-    "@consenlabs-fe/eslint-ts/react"
+    "@consenlabs-fe/eslint-config-ts",
+    "@consenlabs-fe/eslint-config-react"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -77,4 +74,5 @@ So naturally, we need to install dependencies before we begin:
 <br/>
 
 ## LICENSE
+
 [MIT](https://github.com/@consenlabs/eslint/blob/master/LICENSE)

@@ -5,18 +5,6 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: checkout
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: install
-        run: yarn install --check-files --frozen-lockfile
-      - name: build
-        run: yarn build
   publish:
     needs: build
     runs-on: ubuntu-latest
@@ -25,10 +13,10 @@ jobs:
       - name: checkout
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: '16.3.0'
           registry-url: https://registry.npmjs.org/
       - name: install
-        run: yarn install --check-files --frozen-lockfile
+        run: npm i
       - name: set dist-tag
         run: |
           case "${{github.event.release.name}}" in
@@ -44,6 +32,6 @@ jobs:
       - name: publish
         run: |
           echo ">> dist-tag: ${{ env.r_tag }}"
-          yarn release --tag ${{ env.r_tag }}
+          npm run release --tag ${{ env.r_tag }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
