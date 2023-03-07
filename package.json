@@ -1,6 +1,6 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "0.2.3",
+  "version": "0.3.6",
   "main": "index.js",
   "license": "MIT",
   "description": "Eslint configuration for Consenlabs team",
@@ -9,12 +9,13 @@
     "url": "https://github.com/consenlabs/eslint"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "prettier": "@consenlabs-fe/prettier",
   "scripts": {
     "build": "echo 0",
-    "sync-version": "node scripts/release.js",
+    "sync-subpackage": "npm i @consenlabs-fe/eslint-plugin --workspace=@consenlabs-fe/eslint-config-ts",
+    "sync-version": "node scripts/release.js && npm run sync-subpackage",
     "release": "npm run sync-version && npm publish --workspaces"
   },
   "devDependencies": {
