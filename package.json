@@ -1,29 +1,49 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "0.3.6",
-  "main": "index.js",
+  "type": "module",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "description": "Eslint configuration for Consenlabs team",
+  "packageManager": "pnpm@8.10.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/consenlabs/eslint"
   },
-  "workspaces": [
-    "packages/**/*"
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
   ],
-  "prettier": "@consenlabs-fe/prettier",
   "scripts": {
-    "build": "echo 0",
-    "sync-subpackage": "npm i @consenlabs-fe/eslint-plugin --workspace=@consenlabs-fe/eslint-config-ts",
-    "sync-version": "node scripts/release.js && npm run sync-subpackage",
-    "release": "npm run sync-version && npm publish --workspaces"
+    "build": "tsup src/index.ts --format esm,cjs --clean --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer"
   },
   "devDependencies": {
-    "@consenlabs-fe/prettier": "^0.1.2",
-    "@types/node": "^14.11.8",
-    "prettier": "^2.3.2"
+    "@consenlabs-fe/eslint-config": "workspace:*",
+    "@types/eslint": "^8.44.7",
+    "@types/fs-extra": "^11.0.4",
+    "eslint": "^8.53.0",
+    "eslint-flat-config-viewer": "^0.1.1",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.1.1",
+    "lint-staged": "^15.0.2",
+    "simple-git-hooks": "^2.9.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
