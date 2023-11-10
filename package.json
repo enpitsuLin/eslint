@@ -1,6 +1,6 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.0",
   "packageManager": "pnpm@8.10.2",
   "description": "Eslint configuration for Consenlabs team",
   "type": "module",
