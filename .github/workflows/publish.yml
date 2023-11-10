@@ -11,20 +11,24 @@ jobs:
       - name: checkout
         uses: actions/checkout@v1
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          cache: 'pnpm'
 
       - name: install
-        run: npm i
+        run: pnpm i
 
       - name: publish
-        run: npm run release
+        run: pnpm run release
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           
-      - run: npx changelogithub
+      - run: pnpm dlx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
