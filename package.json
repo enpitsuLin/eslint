@@ -25,6 +25,7 @@
     "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
     "lint": "eslint .",
     "lint:fix": "pnpm run lint --fix",
+    "release": "npm run sync-version && npm publish --workspaces",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
