@@ -1,29 +1,78 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "0.3.6",
-  "main": "index.js",
-  "license": "MIT",
+  "version": "1.0.0-beta.0",
+  "packageManager": "pnpm@8.10.2",
   "description": "Eslint configuration for Consenlabs team",
+  "type": "module",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/consenlabs/eslint"
   },
-  "workspaces": [
-    "packages/**/*"
+  "files": [
+    "dist"
   ],
-  "prettier": "@consenlabs-fe/prettier",
-  "scripts": {
-    "build": "echo 0",
-    "sync-subpackage": "npm i @consenlabs-fe/eslint-plugin --workspace=@consenlabs-fe/eslint-config-ts",
-    "sync-version": "node scripts/release.js && npm run sync-subpackage",
-    "release": "npm run sync-version && npm publish --workspaces"
-  },
-  "devDependencies": {
-    "@consenlabs-fe/prettier": "^0.1.2",
-    "@types/node": "^14.11.8",
-    "prettier": "^2.3.2"
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --clean --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
+    "release": "bumpp && npm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@types/eslint": "^8.44.7",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint-config-flat-gitignore": "^0.1.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-define-config": "^1.24.1",
+    "eslint-plugin-antfu": "^1.0.2",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-i": "^2.29.0",
+    "eslint-plugin-jsonc": "^2.10.0",
+    "eslint-plugin-markdown": "^3.0.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sort-keys": "^2.3.5",
+    "eslint-plugin-unicorn": "^49.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-vue": "^9.18.1",
+    "eslint-plugin-yml": "^1.10.0",
+    "globals": "^13.23.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "local-pkg": "^0.5.0",
+    "vue-eslint-parser": "^9.3.2",
+    "yaml-eslint-parser": "^1.2.2"
+  },
+  "devDependencies": {
+    "@consenlabs-fe/eslint-config": "workspace:*",
+    "@types/node": "^20.9.0",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.53.0",
+    "eslint-flat-config-viewer": "^0.1.1",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "simple-git-hooks": "^2.9.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }

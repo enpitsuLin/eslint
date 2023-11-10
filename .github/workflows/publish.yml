@@ -6,32 +6,28 @@ on:
 
 jobs:
   publish:
-    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - name: checkout
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v1
+
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: '16.3.0'
-          registry-url: https://registry.npmjs.org/
+          version: 8
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
       - name: install
-        run: npm i
-      - name: set dist-tag
-        run: |
-          case "${{github.event.release.name}}" in
-          *"rc"* | *"canary"*)
-           echo "r_tag=canary" >> $GITHUB_ENV;;
-          *"dev"*)
-           echo "r_tag=dev" >> $GITHUB_ENV;;
-          *"beta"*)
-           echo "r_tag=beta" >> $GITHUB_ENV;;
-          *)
-           echo "r_tag=latest" >> $GITHUB_ENV;;
-          esac
+        run: pnpm i
+
       - name: publish
-        run: |
-          echo ">> dist-tag: ${{ env.r_tag }}"
-          npm run release --tag ${{ env.r_tag }}
+        run: pnpm run release
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+      - run: pnpm dlx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
