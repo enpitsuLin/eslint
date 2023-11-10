@@ -68,6 +68,9 @@ importers:
       globals:
         specifier: ^13.23.0
         version: 13.23.0
+      jsonc-eslint-parser:
+        specifier: ^2.4.0
+        version: 2.4.0
       local-pkg:
         specifier: ^0.5.0
         version: 0.5.0

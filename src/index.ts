@@ -1,4 +1,4 @@
-import { hasVue } from './utils'
+import { hasTypeScript, hasVue } from './utils'
 import {
   comments,
   ignores,
@@ -24,15 +24,16 @@ export const presetJavaScript = [
   ...imports,
   ...unicorn,
 ]
+export const presetTypeScript = [
+  ...presetJavaScript,
+  ...typescript
+]
 
 export const presetJsonc = [...jsonc, ...sortPackageJson, ...sortTsconfig]
 export const presetLangsExtensions = [...markdown, ...yml, ...presetJsonc]
 
-export const basic = [...presetJavaScript, ...typescript]
-export { basic as presetBasic }
-
 export const all = [
-  ...basic,
+  ...presetJavaScript,
   ...presetLangsExtensions,
   ...sortKeys,
   ...vue,
@@ -46,15 +47,10 @@ export function defineConfig(
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
     sortKeys: enableSortKeys = true,
-  }: Partial<{
-    vue: boolean
-    prettier: boolean
-    markdown: boolean
-    unocss: boolean
-    sortKeys: boolean
-  }> = {}
+    typescript: enableTypescript = hasTypeScript
+  }: Partial<Record<"vue" | "prettier" | "markdown" | "unocss" | "sortKeys" | "typescript", boolean>> = {}
 ): FlatESLintConfigItem[] {
-  const configs = [...basic, ...yml, ...presetJsonc]
+  const configs = [...presetJavaScript, ...yml, ...presetJsonc]
   if (enableSortKeys) {
     configs.push(...sortKeys)
   }
@@ -66,6 +62,9 @@ export function defineConfig(
   }
   if (enablePrettier) {
     configs.push(...prettier)
+  }
+  if (enableTypescript) {
+    configs.push(...typescript)
   }
   if (Object.keys(config).length > 0) {
     configs.push(...(Array.isArray(config) ? config : [config]))
