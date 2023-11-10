@@ -24,10 +24,7 @@ export const presetJavaScript = [
   ...imports,
   ...unicorn,
 ]
-export const presetTypeScript = [
-  ...presetJavaScript,
-  ...typescript
-]
+export const presetTypeScript = [...presetJavaScript, ...typescript]
 
 export const presetJsonc = [...jsonc, ...sortPackageJson, ...sortTsconfig]
 export const presetLangsExtensions = [...markdown, ...yml, ...presetJsonc]
@@ -47,8 +44,13 @@ export function defineConfig(
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
     sortKeys: enableSortKeys = true,
-    typescript: enableTypescript = hasTypeScript
-  }: Partial<Record<"vue" | "prettier" | "markdown" | "unocss" | "sortKeys" | "typescript", boolean>> = {}
+    typescript: enableTypescript = hasTypeScript,
+  }: Partial<
+    Record<
+      'vue' | 'prettier' | 'markdown' | 'unocss' | 'sortKeys' | 'typescript',
+      boolean
+    >
+  > = {},
 ): FlatESLintConfigItem[] {
   const configs = [...presetJavaScript, ...yml, ...presetJsonc]
   if (enableSortKeys) {

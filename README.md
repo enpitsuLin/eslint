@@ -12,25 +12,27 @@ Please make sure you have installed `eslint` and version 5 or higher.
 1. Install package: `yarn add @consenlabs-fe/eslint-config -D`
 2. Add the following code to the in-configuration file (`.eslintrc`):
 
-    ```
-    { "extends": "@consenlabs-fe/eslint-config" }
-    ```
+```json
+{ "extends": "@consenlabs-fe/eslint-config" }
+```
 
-    **OR**, if you are using the `.yml`:
-    ```yml
-    extends:
-      - '@consenlabs-fe/eslint-config'
-    ```
+**OR**, if you are using the `.yml`:
+```yml
+extends:
+  - '@consenlabs-fe/eslint-config'
+```
 
 3. If you are using `xo`, please refer to the following configuration:
 
-    ```
-    "xo": {
-      "extends": [
-        "@consenlabs-fe/eslint-config"
-      ]
-    },
-    ```
+```json
+{
+  "xo": {
+    "extends": [
+      "@consenlabs-fe/eslint-config"
+    ]
+  },
+}
+```
 
 ### TypeScript & React
 
@@ -51,12 +53,14 @@ So naturally, we need to install dependencies before we begin:
 1. Install package: `yarn add @consenlabs-fe/eslint-config-ts -D`
 2. Adding configuration to the `.eslintrc` file:
 
-    ```json
-    "extends": ["@consenlabs-fe/eslint-config-ts"],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    }
-    ```
+```json
+{
+  "extends": ["@consenlabs-fe/eslint-config-ts"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
+```
 
 **For React:**
 ```json

@@ -1,25 +1,28 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "type": "module",
   "version": "1.0.0-beta.1",
-  "license": "MIT",
-  "description": "Eslint configuration for Consenlabs team",
   "packageManager": "pnpm@8.10.2",
+  "description": "Eslint configuration for Consenlabs team",
+  "type": "module",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/consenlabs/eslint"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --clean --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
@@ -65,9 +68,6 @@
     "simple-git-hooks": "^2.9.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

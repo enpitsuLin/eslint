@@ -10,7 +10,7 @@ export const imports: FlatESLintConfigItem[] = [
     },
     rules: {
       'antfu/import-dedupe': 'error',
-      'import/namespace': "off",
+      'import/namespace': 'off',
       'import/first': 'error',
       'import/no-default-export': 'error',
       'import/no-duplicates': 'error',
